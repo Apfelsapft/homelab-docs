@@ -73,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#proxmox-snapshots" class="md-skip">
+          Zum Inhalt
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -477,6 +482,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proxmox Snapshots
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -494,6 +519,97 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ubersicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Übersicht
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backup-Jobs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiederherstellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wiederherstellen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bekannte-probleme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bekannte Probleme
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bekannte Probleme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#230326" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        23.03.26
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -524,6 +640,88 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ubersicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Übersicht
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backup-Jobs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiederherstellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wiederherstellen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bekannte-probleme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bekannte Probleme
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bekannte Probleme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#230326" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        23.03.26
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -540,9 +738,63 @@
 
 
 
-  <h1>Proxmox Snapshots</h1>
-
-
+<h1 id="proxmox-snapshots">Proxmox Snapshots</h1>
+<h2 id="ubersicht">Übersicht</h2>
+<p>Proxmox erstellt automatische VM-Backups (VZDump) aller virtuellen Maschinen.
+Die Backups werden auf dem <code>tankmirror-backups</code> Storage gespeichert (15TB ZFS Pool).</p>
+<h2 id="backup-jobs">Backup-Jobs</h2>
+<table>
+<thead>
+<tr>
+<th>VM</th>
+<th>Schedule</th>
+<th>Retention</th>
+<th>Storage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100 (Ubuntu)</td>
+<td>Täglich 03:00</td>
+<td>keep-last=7</td>
+<td>tankmirror-backups</td>
+</tr>
+<tr>
+<td>101 (win2019)</td>
+<td>Sonntags 01:00</td>
+<td>keep-last=3</td>
+<td>tankmirror-backups</td>
+</tr>
+</tbody>
+</table>
+<h2 id="storage">Storage</h2>
+<p>Die Backups liegen auf dem <code>tankmirror</code> ZFS Pool:</p>
+<ul>
+<li><strong>Pfad:</strong> <code>/tankmirror/backups</code></li>
+<li><strong>Kapazität:</strong> 15TB (gespiegelt, 2x 8TB)</li>
+<li><strong>Typ:</strong> ZFS Mirror</li>
+</ul>
+<h2 id="wiederherstellen">Wiederherstellen</h2>
+<ol>
+<li>Proxmox Web UI öffnen</li>
+<li><strong>tankmirror-backups</strong> → <strong>Backups</strong></li>
+<li>Gewünschtes Backup auswählen</li>
+<li><strong>Restore</strong> klicken</li>
+<li>Ziel-Storage und VM-ID festlegen</li>
+<li><strong>Restore</strong> bestätigen</li>
+</ol>
+<h2 id="bekannte-probleme">Bekannte Probleme</h2>
+<h3 id="230326">23.03.26</h3>
+<p>Ubuntu server offline
+lässt sich nicht (neu)starten
+die "local" platte von proxmox ist voll gelaufen (120gb ssd eig nur für proxmox OS gedacht)
+mir war nicht bewusst das die platte für die Server snapshots verwendet wird</p>
+<p>Backup Ordner auf HDDs ZFS Pool erstellt
+Proxmox Backup Storage "tankmirror-backups" erstellt
+Snapshot Jobs von "local" auf "tankmirror-backups" geändert</p>
+<p>stellt sich heraus ich habe die Ubuntu VM in "local-lvm" auf der 120gb SSD installiert und 180gb zugewiesen
+ubuntu VM umgezogen auf HDD "tankmirror" </p>
+<p>Ubuntu=ok</p>
 
 
 
